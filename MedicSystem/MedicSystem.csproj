@@ -33,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -43,6 +44,42 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.1.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.1.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.1.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.1.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.1.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.1.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -89,19 +126,99 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="scripts\ai.0.22.19-build00125.js" />
+    <Content Include="scripts\ai.0.22.19-build00125.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\jquery-1.10.2.js" />
+    <Content Include="scripts\jquery-1.10.2.min.js" />
+    <None Include="scripts\jquery.validate-vsdoc.js" />
+    <Content Include="scripts\jquery.validate.js" />
+    <Content Include="scripts\jquery.validate.min.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClinicasController.cs" />
+    <Compile Include="Controllers\DadosPessoaisController.cs" />
+    <Compile Include="Controllers\PacientesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608221709093_InitialCreate.cs" />
+    <Compile Include="Migrations\201608221709093_InitialCreate.Designer.cs">
+      <DependentUpon>201608221709093_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608222317423_CreateEnderecos.cs" />
+    <Compile Include="Migrations\201608222317423_CreateEnderecos.Designer.cs">
+      <DependentUpon>201608222317423_CreateEnderecos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608222331316_AddEnderecoToClinicas.cs" />
+    <Compile Include="Migrations\201608222331316_AddEnderecoToClinicas.Designer.cs">
+      <DependentUpon>201608222331316_AddEnderecoToClinicas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608222331598_FirstForeignKey.cs" />
+    <Compile Include="Migrations\201608222331598_FirstForeignKey.Designer.cs">
+      <DependentUpon>201608222331598_FirstForeignKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608222341362_CreateMedicos.cs" />
+    <Compile Include="Migrations\201608222341362_CreateMedicos.Designer.cs">
+      <DependentUpon>201608222341362_CreateMedicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608222345247_CreateDadosPessoais.cs" />
+    <Compile Include="Migrations\201608222345247_CreateDadosPessoais.Designer.cs">
+      <DependentUpon>201608222345247_CreateDadosPessoais.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608222347105_AddDadosToMedicos.cs" />
+    <Compile Include="Migrations\201608222347105_AddDadosToMedicos.Designer.cs">
+      <DependentUpon>201608222347105_AddDadosToMedicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608222351559_CreatePacientes.cs" />
+    <Compile Include="Migrations\201608222351559_CreatePacientes.Designer.cs">
+      <DependentUpon>201608222351559_CreatePacientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Clinicas.cs" />
+    <Compile Include="Models\DadosPessoais.cs" />
+    <Compile Include="Models\Enderecos.cs" />
+    <Compile Include="Models\MedicalContext.cs" />
+    <Compile Include="Models\Medicos.cs" />
+    <Compile Include="Models\Pacientes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\PacientesCreateViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Clinicas\Create.cshtml" />
+    <Content Include="Views\Clinicas\Delete.cshtml" />
+    <Content Include="Views\Clinicas\Details.cshtml" />
+    <Content Include="Views\Clinicas\Edit.cshtml" />
+    <Content Include="Views\Clinicas\Index.cshtml" />
+    <Content Include="scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Pacientes\Create.cshtml" />
+    <Content Include="Views\Pacientes\Delete.cshtml" />
+    <Content Include="Views\Pacientes\Details.cshtml" />
+    <Content Include="Views\Pacientes\Edit.cshtml" />
+    <Content Include="Views\Pacientes\Index.cshtml" />
+    <Content Include="Views\DadosPessoais\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -111,8 +228,32 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201608221709093_InitialCreate.resx">
+      <DependentUpon>201608221709093_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608222317423_CreateEnderecos.resx">
+      <DependentUpon>201608222317423_CreateEnderecos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608222331316_AddEnderecoToClinicas.resx">
+      <DependentUpon>201608222331316_AddEnderecoToClinicas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608222331598_FirstForeignKey.resx">
+      <DependentUpon>201608222331598_FirstForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608222341362_CreateMedicos.resx">
+      <DependentUpon>201608222341362_CreateMedicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608222345247_CreateDadosPessoais.resx">
+      <DependentUpon>201608222345247_CreateDadosPessoais.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608222347105_AddDadosToMedicos.resx">
+      <DependentUpon>201608222347105_AddDadosToMedicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608222351559_CreatePacientes.resx">
+      <DependentUpon>201608222351559_CreatePacientes.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
