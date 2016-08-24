@@ -191,6 +191,10 @@
     <Compile Include="Migrations\201608222351559_CreatePacientes.Designer.cs">
       <DependentUpon>201608222351559_CreatePacientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608241932587_ConnectClinicasMedicos.cs" />
+    <Compile Include="Migrations\201608241932587_ConnectClinicasMedicos.Designer.cs">
+      <DependentUpon>201608241932587_ConnectClinicasMedicos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Clinicas.cs" />
     <Compile Include="Models\DadosPessoais.cs" />
@@ -263,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608222351559_CreatePacientes.resx">
       <DependentUpon>201608222351559_CreatePacientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608241932587_ConnectClinicasMedicos.resx">
+      <DependentUpon>201608241932587_ConnectClinicasMedicos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

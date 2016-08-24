@@ -25,5 +25,7 @@ namespace MedicSystem.Models
 
         [ForeignKey("DadosPessoaisId")]
         public DadosPessoais Dados { get; set; }
+
+        public virtual ICollection<Clinicas> Clinicas { get; set; }
     }
 }

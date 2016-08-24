@@ -18,5 +18,7 @@ namespace MedicSystem.Models
 
         [ForeignKey("EnderecoId")]
         public Enderecos Endereco { get; set; }
+
+        public virtual ICollection<Medicos> Medicos { get; set; }
     }
 }
