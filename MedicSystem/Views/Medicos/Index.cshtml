@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Dados.Cpf)
+            @Html.DisplayNameFor(model => model.Dados.Nome)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Endereco.Pais)
+            @Html.DisplayNameFor(model => model.Endereco.Cidade)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Crm)
@@ -29,10 +29,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Dados.Cpf)
+            @Html.DisplayFor(modelItem => item.Dados.Nome)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Endereco.Pais)
+            @Html.DisplayFor(modelItem => item.Endereco.Cidade) / @Html.DisplayFor(modelItem => item.Endereco.Estado)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Crm)
@@ -41,7 +41,7 @@
             @Html.DisplayFor(modelItem => item.Especialidade)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MedicoId }) |
+            @Html.ActionLink("Edit personal data", "Edit", "DadosPessoais", new { id = item.DadosPessoaisId }, null) | |
             @Html.ActionLink("Details", "Details", new { id=item.MedicoId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.MedicoId })
         </td>

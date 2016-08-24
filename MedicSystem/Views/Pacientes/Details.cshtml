@@ -11,6 +11,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Dados.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dados.Nome)            
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Dados.Cpf)
         </dt>
 
@@ -19,11 +27,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Endereco.Pais)
+            @Html.DisplayNameFor(model => model.Endereco.Cidade)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Endereco.Pais)
+            @Html.DisplayFor(model => model.Endereco.Cidade) / @Html.DisplayFor(model => model.Endereco.Estado) / @Html.DisplayFor(model => model.Endereco.Pais)
         </dd>
 
     </dl>

@@ -30,6 +30,9 @@ namespace MedicSystem.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Pacientes pacientes = db.Pacientes.Find(id);
+            db.Entry(pacientes).Reference(p => p.Dados).Load();
+            db.Entry(pacientes).Reference(p => p.Endereco).Load();
+
             if (pacientes == null)
             {
                 return HttpNotFound();
@@ -58,7 +61,7 @@ namespace MedicSystem.Controllers
                 data_object = DateTime.Today;
             }
                 
-            Enderecos novo_endereco = endereco;            
+            Enderecos novo_endereco = endereco;
             DadosPessoais novos_dados = dados;
             novos_dados.Nascimento = data_object;
             if (ModelState.IsValid)

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MedicSystem.Models;
+using MedicSystem.ViewModels;
 
 namespace MedicSystem.Controllers
 {
@@ -38,7 +39,8 @@ namespace MedicSystem.Controllers
         // GET: Clinicas/Create
         public ActionResult Create()
         {
-            return View();
+            ClinicasCreateViewModel model = new ClinicasCreateViewModel();
+            return View(model);
         }
 
         // POST: Clinicas/Create
@@ -46,16 +48,24 @@ namespace MedicSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ClinicaId,Nome,Cidade,Estado")] Clinicas clinicas)
+        public ActionResult Create(Enderecos endereco, Clinicas clinica)
         {
+            Enderecos novo_endereco = endereco;
             if (ModelState.IsValid)
             {
-                db.Clinicas.Add(clinicas);
+                db.Enderecos.Add(novo_endereco);
+                db.SaveChanges();
+
+                clinica.Endereco = novo_endereco;
+
+                db.Clinicas.Add(clinica);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(clinicas);
+            ClinicasCreateViewModel view_model = new ClinicasCreateViewModel(clinica, endereco);
+
+            return View(view_model);
         }
 
         // GET: Clinicas/Edit/5

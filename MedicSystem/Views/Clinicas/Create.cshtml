@@ -1,4 +1,4 @@
-﻿@model MedicSystem.Models.Clinicas
+﻿@model MedicSystem.ViewModels.ClinicasCreateViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -16,10 +16,34 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.clinica.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.clinica.Nome, new { htmlAttributes = new { @class = "form-control" } })                
+            </div>
+        </div>
+
+        <div>
+            <label class="control-label col-md-2">Endereço</label><br /><br />
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.endereco.Pais, "Pais", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.endereco.Pais)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.endereco.Estado, "Estado", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.endereco.Estado)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.endereco.Cidade, "Cidade", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.endereco.Cidade)
+                </div>
             </div>
         </div>
 
