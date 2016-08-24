@@ -153,6 +153,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClinicasController.cs" />
     <Compile Include="Controllers\DadosPessoaisController.cs" />
+    <Compile Include="Controllers\MedicosController.cs" />
     <Compile Include="Controllers\PacientesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -197,6 +198,7 @@
     <Compile Include="Models\Medicos.cs" />
     <Compile Include="Models\Pacientes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\MedicosCreateViewModel.cs" />
     <Compile Include="ViewModels\PacientesCreateViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -219,6 +221,11 @@
     <Content Include="Views\Pacientes\Edit.cshtml" />
     <Content Include="Views\Pacientes\Index.cshtml" />
     <Content Include="Views\DadosPessoais\Edit.cshtml" />
+    <Content Include="Views\Medicos\Create.cshtml" />
+    <Content Include="Views\Medicos\Delete.cshtml" />
+    <Content Include="Views\Medicos\Details.cshtml" />
+    <Content Include="Views\Medicos\Edit.cshtml" />
+    <Content Include="Views\Medicos\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

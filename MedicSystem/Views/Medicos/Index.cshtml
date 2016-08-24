@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MedicSystem.Models.Medicos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Dados.Cpf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Endereco.Pais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Crm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Especialidade)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dados.Cpf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco.Pais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Crm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Especialidade)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MedicoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MedicoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MedicoId })
+        </td>
+    </tr>
+}
+
+</table>
