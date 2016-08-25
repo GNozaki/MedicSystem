@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using MedicSystem.Models;
 using MedicSystem.ViewModels;
+using System.Collections;
+using System.Diagnostics;
 
 namespace MedicSystem.Controllers
 {
@@ -28,7 +30,24 @@ namespace MedicSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Clinicas clinicas = db.Clinicas.Find(id);
+            Clinicas clinicas = db.Clinicas.Where(c => c.ClinicaId == id).Include("Medicos.Dados").FirstOrDefault();
+            db.Entry(clinicas).Reference(p => p.Endereco).Load();
+
+            //db.Entry(clinicas).Collection(p => p.Medicos).Load();
+
+            var medicos = db.Medicos.Include("Dados").ToList();
+            List<LinkedList<string>> medicos_nome = new List<LinkedList<string>>();
+            int conta = 0;
+            foreach (Medicos medico in medicos)
+            {
+                conta++;
+                LinkedList<string> novo = new LinkedList<string>();
+                novo.AddFirst(medico.Dados.Nome);
+                novo.AddLast(medico.MedicoId.ToString());
+                medicos_nome.Add(novo);
+            }
+            ViewBag.ListMedicos = medicos_nome;
+
             if (clinicas == null)
             {
                 return HttpNotFound();
@@ -123,6 +142,46 @@ namespace MedicSystem.Controllers
             db.Clinicas.Remove(clinicas);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddMedic(int? clinicaId, int? medicoId)
+        {
+            Clinicas clinica = db.Clinicas.Find(clinicaId);            
+            Medicos medico = db.Medicos.Find(medicoId);
+
+            if (clinica == null || medico == null) {
+                return HttpNotFound();
+            }
+
+            if (!clinica.Medicos.Contains(medico)) { 
+                clinica.Medicos.Add(medico);
+                db.SaveChanges();
+            }            
+
+            return RedirectToAction("Details", new { id = clinica.ClinicaId });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemoveMedic(int? clinicaId, int? medicoId)
+        {
+            Clinicas clinica = db.Clinicas.Find(clinicaId);
+            Medicos medico = db.Medicos.Find(medicoId);
+
+            if (clinica == null || medico == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (clinica.Medicos.Contains(medico))
+            {
+                clinica.Medicos.Remove(medico);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Details", new { id = clinica.ClinicaId });
         }
 
         protected override void Dispose(bool disposing)
