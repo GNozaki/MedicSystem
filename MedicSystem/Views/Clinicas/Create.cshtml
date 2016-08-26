@@ -4,59 +4,68 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<div class="row">
+    <h2>Create Clinicas</h2>
+</div>
 
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Clinicas</div>
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Clinicas</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.clinica.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.clinica.Nome, new { htmlAttributes = new { @class = "form-control" } })                
-            </div>
-        </div>
+                    <div class="form-horizontal">
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.clinica.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.clinica.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
 
-        <div>
-            <label class="control-label col-md-2">Endereço</label><br /><br />
+                        <div>
+                            <label class="control-label col-md-2">Endereço</label><br /><br />
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.endereco.Pais, "Pais", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.endereco.Pais)
-                </div>
-            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.endereco.Pais, "Pais", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(model => model.endereco.Pais, new {  @class = "form-control" } )
+                                </div>
+                            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.endereco.Estado, "Estado", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.endereco.Estado)
-                </div>
-            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.endereco.Estado, "Estado", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(model => model.endereco.Estado, new { @class = "form-control" })
+                                </div>
+                            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.endereco.Cidade, "Cidade", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.endereco.Cidade)
-                </div>
-            </div>
-        </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.endereco.Cidade, "Cidade", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(model => model.endereco.Cidade, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>
-}
+</div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="row">
+    @Html.ActionLink("Back to List", "Index", "Clinicas", null, new { @class = "btn btn-primary" } )
 </div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
