@@ -4,36 +4,64 @@
     ViewBag.Title = "Index pacientes";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Pacientes</h2>
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Dados.Cpf)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Dados.Nome)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">    
+    <div class="col-lg-12">
+        @Html.ActionLink("Create New", "Create", "Pacientes", null, new { @class = "btn btn-default" })
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Dados.Cpf)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Dados.Nome)
-        </td>
-        <td>
-            @Html.ActionLink("Edit personal data", "Edit", "DadosPessoais",new { id = item.DadosPessoaisId }, null) |
-            @Html.ActionLink("Details", "Details", new { id=item.PacienteId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PacienteId })
-        </td>
-    </tr>
-}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Lista de Pacientes
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Dados.Cpf)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Dados.Nome)
+                            </th>
+                            <th>#</th>
+                            <th>#</th>
+                            <th>#</th>
+                        </tr>
 
-</table>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Dados.Cpf)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Dados.Nome)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit personal data", "Edit", "DadosPessoais", new { id = item.DadosPessoaisId }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Edit endereço", "Edit", "Enderecos", new { id = item.EnderecoId }, new { @class = "btn btn-primary" })
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Details", "Details", "Pacientes", new { id = item.PacienteId }, new { @class = "btn btn-primary" })
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Delete", "Delete", "Pacientes", new { id = item.PacienteId }, new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
