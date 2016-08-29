@@ -13,6 +13,12 @@ namespace MedicSystem
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            /*routes.MapRoute(
+                "Default",
+                "",
+                new { controller = "Home", action = "Index" }
+            );*/
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
