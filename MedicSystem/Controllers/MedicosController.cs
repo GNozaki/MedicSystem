@@ -30,6 +30,8 @@ namespace MedicSystem.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Medicos medicos = db.Medicos.Find(id);
+            db.Entry(medicos).Reference(p => p.Dados).Load();
+            db.Entry(medicos).Reference(p => p.Endereco).Load();
             if (medicos == null)
             {
                 return HttpNotFound();

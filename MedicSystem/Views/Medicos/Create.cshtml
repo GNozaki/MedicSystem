@@ -4,90 +4,92 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<div class="row">
+    <h2>Create/Medicos</h2>
+</div>
 
+<div class="row">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Medicos</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.medico.Crm, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.medico.Crm, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.medico.Crm, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.medico.Crm, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.medico.Crm, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.medico.Crm, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.medico.Especialidade, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.medico.Especialidade, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.medico.Especialidade, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div>
+                <label class="control-label col-md-2">Dados Pessoais</label><br /><br />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.dados.Cpf, "CPF", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.dados.Cpf, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.dados.Nome, "Nome", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.dados.Nome, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.dados.Nascimento, "Nascimento", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.TextBox("data_nasc", (string)ViewBag.data_string, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label class="control-label col-md-2">Endereço</label><br /><br />
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.endereco.Pais, "Pais", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.endereco.Pais, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.endereco.Estado, "Estado", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.endereco.Estado, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.endereco.Cidade, "Cidade", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.endereco.Cidade, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
             </div>
         </div>
+    }
+</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.medico.Especialidade, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.medico.Especialidade, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.medico.Especialidade, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div>
-            <label class="control-label col-md-2">Dados Pessoais</label><br /><br />
-            <div class="form-group">
-                @Html.LabelFor(model => model.dados.Cpf, "CPF", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.dados.Cpf)
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.dados.Nome, "Nome", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.dados.Nome)
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.dados.Nascimento, "Nascimento", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBox("data_nasc", (string)ViewBag.data_string)
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <label class="control-label col-md-2">Endereço</label><br /><br />
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.endereco.Pais, "Pais", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.endereco.Pais)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.endereco.Estado, "Estado", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.endereco.Estado)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.endereco.Cidade, "Cidade", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.endereco.Cidade)
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="row">
+    @Html.ActionLink("Back to List", "Index", "Medicos", null, new { @class = "btn btn-primary" })
 </div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>

@@ -4,10 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <h2>Index</h2>
+</div>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "Medicos", null, new { @class = "btn btn-primary" } )
 </p>
 <table class="table">
     <tr>
@@ -41,9 +43,11 @@
             @Html.DisplayFor(modelItem => item.Especialidade)
         </td>
         <td>
-            @Html.ActionLink("Edit personal data", "Edit", "DadosPessoais", new { id = item.DadosPessoaisId }, null) | |
-            @Html.ActionLink("Details", "Details", new { id=item.MedicoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MedicoId })
+            @Html.ActionLink("Edit", "Edit", "Medicos", new { id = item.MedicoId }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Edit personal data", "Edit", "DadosPessoais", new { id = item.DadosPessoaisId }, new { @class = "btn btn-primary" }) 
+            @Html.ActionLink("Edit address", "Edit", "Enderecos", new { id = item.EnderecoId }, new { @class = "btn btn-primary" })            
+            @Html.ActionLink("Details", "Details", "Medicos", new { id=item.MedicoId }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Delete", "Delete", "Medicos", new { id=item.MedicoId }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }
